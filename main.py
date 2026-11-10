@@ -45,11 +45,14 @@ class Mascota(QWidget):
         self.image.setStyleSheet("background: transparent;")
 
         self.fotogramas = {}
+
         for nombre, archivos in ANIMACIONES.items():
-            self.fotogramas[nombre] = [ ]
+            self.fotogramas[nombre] = []
+            
             for archivo in archivos:
                 ruta = CARPETA / archivo
                 image = QPixmap(str(ruta))
+                self.fotogramas[nombre].append(image)
                 if image.isNull():
                     raise FileNotFoundError(f"No encuentro este PNG: {ruta}")
                 primero = self.fotogramas["idle"][0]
@@ -66,7 +69,7 @@ class Mascota(QWidget):
                 self.reloj.timeout.connect(self.siguiente_fotograma)
                 self.reloj.start(DURACION_FOTOGRAMA_MS)
 
-                def mostrar_fotograma(self):
+        def mostrar_fotograma(self):
                     original = self.fotogramas[self.estado][self.indice]
                     ampliada = original.scaled(
                         self.size(),
@@ -76,7 +79,7 @@ class Mascota(QWidget):
                     self.image.setPixmap(ampliada)
                     self.image.resize(self.size())
 
-                    def siguiente_fotograma(self):
+        def siguiente_fotograma(self):
                         self.indice += 1
 
                         if self.indice >= len(self.fotogramas[self.estado]):
@@ -87,12 +90,12 @@ class Mascota(QWidget):
 
                         self.mostrar_fotograma()
 
-                    def mousePressEvent(self, evento):
+        def mousePressEvent(self, evento):
                         if evento.button( ) == Qt.MouseButton.LeftButton:
                             self.posicion_arrastre = evento.globalPosition().toPoint() -self.pos() 
                             self.posicion_clic = evento.globalPosition().toPoint()
 
-                    def mouseReleaseEvent(self, evento):
+        def mouseReleaseEvent(self, evento):
                         if evento.button() == Qt.MouseButton.LeftButton:
                             actual = evento.globalPosition().toPoint()
                             distancia = (actual -self.position_clic).manhattanLength()
@@ -105,7 +108,7 @@ class Mascota(QWidget):
 
                             self.posicion_arrastre = None
 
-                    def KeyPressEvent(self, evento):
+        def KeyPressEvent(self, evento):
                         if evento.key() == Qt.Key.Key_Escape:
                             self.close()
                         elif evento.key() == Qt.Key.Key_S:
