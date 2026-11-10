@@ -98,7 +98,7 @@ class Mascota(QWidget):
     def mouseReleaseEvent(self, evento):
                         if evento.button() == Qt.MouseButton.LeftButton:
                             actual = evento.globalPosition().toPoint()
-                            distancia = (actual -self.position_clic).manhattanLength()
+                            distancia = (actual -self.posicion_clic).manhattanLength()
 
                             if distancia < 6:
                                 self.estado = "kiss"
