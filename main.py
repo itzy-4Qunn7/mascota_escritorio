@@ -38,7 +38,7 @@ class Mascota(QWidget):
             |Qt.WindowType.Tool
         )
 
-        self.setAttribute(Qt.WidgetAttribute.WA_translucentBackground)
+        self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         self.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
 
         self.image = QLabel(self)
