@@ -55,10 +55,10 @@ class Mascota(QWidget):
                 self.fotogramas[nombre].append(image)
                 if image.isNull():
                     raise FileNotFoundError(f"No encuentro este PNG: {ruta}")
-                primero = self.fotogramas["kiss"][0]
+                primero = self.fotogramas["idle"][0]
                 self.resize(primero.width() * ESCALA, primero.height() * ESCALA)
 
-                self.estado = "kiss"
+                self.estado = "idle"
                 self.indice = 0
                 self.besito_una_vez = False
                 self.posicion_arrastre = None
@@ -84,7 +84,7 @@ class Mascota(QWidget):
 
                         if self.indice >= len(self.fotogramas[self.estado]):
                             if self.besito_una_vez:
-                                self.estado = "kiss"
+                                self.estado = "idle"
                                 self.besito_una_vez = False
                             self.indice = 0
 
