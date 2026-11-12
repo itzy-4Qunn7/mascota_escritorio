@@ -55,7 +55,7 @@ class Mascota(QWidget):
                 self.fotogramas[nombre].append(image)
                 if image.isNull():
                     raise FileNotFoundError(f"No encuentro este PNG: {ruta}")
-                primero = self.fotogramas["idle"][0]
+                primero = self.fotogramas["kiss"][0]
                 self.resize(primero.width() * ESCALA, primero.height() * ESCALA)
 
                 self.estado = "idle"
