@@ -58,7 +58,7 @@ class Mascota(QWidget):
                 primero = self.fotogramas["kiss"][0]
                 self.resize(primero.width() * ESCALA, primero.height() * ESCALA)
 
-                self.estado = "idle"
+                self.estado = "kiss"
                 self.indice = 0
                 self.besito_una_vez = False
                 self.posicion_arrastre = None
@@ -84,7 +84,7 @@ class Mascota(QWidget):
 
                         if self.indice >= len(self.fotogramas[self.estado]):
                             if self.besito_una_vez:
-                                self.estado = "idle"
+                                self.estado = "kiss"
                                 self.besito_una_vez = False
                             self.indice = 0
 
