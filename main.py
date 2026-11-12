@@ -8,7 +8,7 @@ from PySide6.QtWidgets import QApplication, QLabel, QWidget
 
 CARPETA = Path(__file__).parent / "sprites"
 ESCALA = 6
-DURACION_FOTOGRAMA_MS = 400
+DURACION_FOTOGRAMA_MS = 500
 
 ANIMACIONES = {
     "idle": [
