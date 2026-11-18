@@ -21,7 +21,7 @@ ANIMACIONES = {
              "elefante_para_sofi_kiss Copy3.png",
              ],
     "sleep": [
-             "elefante_para_sofi_sleep1.png",
+             #"elefante_para_sofi_sleep1.png",
              "elefante_para_sofi_sleep2.png",
              "elefante_para_sofi_sleep3.png",
     ],
@@ -35,8 +35,9 @@ class Mascota(QWidget):
         self.setWindowFlags (
             Qt.WindowType.FramelessWindowHint
             | Qt.WindowType.WindowStaysOnTopHint
-            |Qt.WindowType.Tool
+            
         )
+       #|Qt.WindowType.Tool
 
         self.setAttribute(Qt.WidgetAttribute.WA_TranslucentBackground)
         self.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
@@ -52,12 +53,12 @@ class Mascota(QWidget):
             for archivo in archivos:
                 ruta = CARPETA / archivo
                 image = QPixmap(str(ruta))
-                self.fotogramas[nombre].append(image)
                 if image.isNull():
                     raise FileNotFoundError(f"No encuentro este PNG: {ruta}")
+                self.fotogramas[nombre].append(image)
                 primero = self.fotogramas["idle"][0]
                 self.resize(primero.width() * ESCALA, primero.height() * ESCALA)
-
+  
                 self.estado = "idle"
                 self.indice = 0
                 self.besito_una_vez = False
